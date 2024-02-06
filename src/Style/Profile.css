@@ -1,0 +1,20 @@
+.profile-fullheader{
+    border: 3px solid #fff;
+   padding: 20px;
+}
+.profile-header{
+    float: left;
+    padding: 20px;
+    border: 2px solid red;
+}
+
+.profile{
+    height: 20rem;
+    width: 20rem;
+}
+
+.profile-change{
+    float: left;
+    padding: 20px;
+    border: 2px solid red;
+}

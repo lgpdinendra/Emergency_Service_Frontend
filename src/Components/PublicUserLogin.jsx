@@ -1,30 +1,32 @@
 import React, { useState } from 'react'
-import '../Style/PublicUserLogin.css';
+import '../Style/Register.css';
 import axios from 'axios';
 import firstname_icon from '../icon/person.png'
 import email_icon from '../icon/email.png'
 import password_icon from '../icon/password.png'
 
+
 const PublicUserLogin = () => {
 
-  const [public_email,setEmail] = useState('');
-  const [public_password, setPassword] = useState('');
+  const [email,setEmail] = useState('');
+  const [password, setPassword] = useState('');
   //const [conpassword,setConpassword] = useState('');
   
 
   const handleLogin = async () => {
     
     try {
-      const response = await axios.post('http://localhost:8080/api/publicuser/register', {
+      const response = await axios.post('http://localhost:8080/user/login', {
         
-        public_email,
-        public_password,
+        email,
+        password,
       });
 
       if (response.status === 200) {
         console.log('User login successfully');
         alert('User login successfully');
         window.location.href = '/login';
+        
       } else {
         console.error('Login failed');
       }
@@ -47,7 +49,7 @@ const PublicUserLogin = () => {
         <input
           type="email"
           placeholder="Email"
-          value={public_email}
+          value={email}
           onChange={(e) => setEmail(e.target.value)}
 
           className=""
@@ -59,7 +61,7 @@ const PublicUserLogin = () => {
         <input
           type="password"
           placeholder="Password"
-          value={public_password}
+          value={password}
           onChange={(e) => setPassword(e.target.value)}
 
           className=""

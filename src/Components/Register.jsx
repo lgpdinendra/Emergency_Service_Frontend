@@ -1,29 +1,29 @@
 import React, { useState } from 'react'
-import '../Style/Register.css';
+import '../Style/PublicUserLogin.css';
 import axios from 'axios';
 
 const Register = () => {
     
   const [public_firstname,setFirstname] = useState('');
   const [public_lastname,setLastname] = useState('');
-  const [public_email,setEmail] = useState('');
+  const [email,setEmail] = useState('');
   const [public_nic,setNic] = useState('');
-  const [public_phonenum,setPhonenum] = useState('');
-  const [public_password, setPassword] = useState('');
+  const [public_pnumber,setPhonenum] = useState('');
+  const [password, setPassword] = useState('');
   const [conpassword,setConpassword] = useState('');
   const [public_address,setAddress] = useState('');
 
   const handleRegister = async () => {
     
     try {
-      const response = await axios.post('http://localhost:8080/api/publicuser/register', {
+      const response = await axios.post('http://localhost:8080/user/register', {
         public_firstname,
         public_lastname,
-        public_email,
+        email,
         public_nic,
-        public_phonenum,
+        public_pnumber,
         public_address,
-        public_password,
+        password,
       });
 
       if (response.status === 200) {
@@ -42,9 +42,13 @@ const Register = () => {
 
   return (
     <div className='container'>
-      <div>
-      <h2 className="registration-header">Registration</h2>
+      <div className='header'>
+        <div className='text'>Registration</div>
+        <div className='underline'></div>
+      </div>
       <form>
+      <div className='inputs'>
+      <div className='input'>
         <input
           type="text"
           placeholder="First Name"
@@ -54,6 +58,8 @@ const Register = () => {
           className="registration-input"
           required
         />
+        </div>
+        <div className='input'>
         <input
           type="text"
           placeholder="Last Name"
@@ -62,14 +68,20 @@ const Register = () => {
 
           className="registration-input"
         />
+        </div>
+
+        <div className='input'>
         <input
           type="email"
           placeholder="Email"
-          value={public_email}
+          value={email}
           onChange={(e) => setEmail(e.target.value)}
 
           className="registration-input"
         />
+        </div>
+
+        <div className='input'>
          <input
           type="text"
           placeholder="NIC"
@@ -78,14 +90,20 @@ const Register = () => {
 
           className="registration-input"
         />
+        </div>
+
+        <div className='input'>
         <input
           type="number"
           placeholder="Phone Number"
-          value={public_phonenum}
+          value={public_pnumber}
           onChange={(e) => setPhonenum(e.target.value)}
           id="usernameInput"
           className="registration-input"
         />
+        </div>
+
+        <div className='input'>
         <input
           type="address"
           placeholder="Address"
@@ -94,14 +112,20 @@ const Register = () => {
 
           className="registration-input"
         />
+        </div>
+
+        <div className='input'>
         <input
           type="password"
           placeholder="Password"
-          value={public_password}
+          value={password}
           onChange={(e) => setPassword(e.target.value)}
 
           className="registration-input"
         />
+        </div>
+
+        <div className='input'>
         <input
           type="password"
           placeholder="Confirm Password"
@@ -110,16 +134,21 @@ const Register = () => {
 
           className="registration-input"
         />
+        </div>
+        </div>
+
+        <div className='submit-container'>
         <button
           type="button"
           onClick={handleRegister}
           id="registerButton"
-          className="registration-button"
+          className="submit"
         >
           Register
         </button>
+        </div>
       </form>
-    </div>
+    
     </div>
   )
 }
