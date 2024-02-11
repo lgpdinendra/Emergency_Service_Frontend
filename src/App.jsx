@@ -1,19 +1,24 @@
-//import { useState } from 'react'
-//import reactLogo from './assets/react.svg'
-//import viteLogo from '/vite.svg'
-//import './App.css'
-import Profile from './Components/Profile'
-import PublicUserLogin from './Components/PublicUserLogin'
-import Register from './Components/Register'
+import { BrowserRouter as Router, Routes,Route} from 'react-router-dom';
+import Header from './Components/Header';
+import Home from './Components/Home';
+import Register from './Components/Register';
+import PublicUserLogin from './Components/PublicUserLogin';
 
 function App() {
-  //const [count, setCount] = useState(0)
-
   return (
-    <>
-      <PublicUserLogin/>
-    </>
-  )
+    <div className='App'>
+      <Header/>
+      <div>
+      <Router>
+        <Routes>
+        <Route path="/"  element={<Home />} />
+        <Route path="/Register" element={<Register />} />
+        <Route path="/PublicUserLogin" element={<PublicUserLogin />} />
+        </Routes>
+      </Router>
+      </div>
+    </div>
+  );
 }
 
-export default App
+export default App;

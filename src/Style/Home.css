@@ -1,0 +1,60 @@
+.container {
+    padding: 20px;
+}
+
+.home-container{
+    display: flex;
+    column-gap: 20px;
+}
+.map-container {
+    width: 50%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+
+.incident-container{
+    width: 50%;
+    padding: 20px;
+    overflow:scroll;
+    height: 600px;
+    box-sizing: border-box;
+}
+
+.incident-container h2 {
+    margin-bottom: 15px;
+}
+
+.listitem {
+    margin-bottom: 15px!important;
+    padding: 7px;
+    border-radius: 10px;
+    background: #bdafaf;
+    transition: transform 0.5s;
+}
+
+.listitem:hover {
+    transform: scale(1.05);
+    margin-bottom: 15px!important;
+    padding: 7px;
+    border-radius: 10px;
+    background: #bdafaf;
+}
+
+.form-container div {
+    margin-bottom: 10px;
+}
+
+.form-container label {
+    font-weight: bold;
+}
+
+.map-container .google-map-container {
+    height: 550px;
+    width: 100%;
+}
+
+.map-container .google-map {
+    height: 100%;
+    width: 100%;
+}
