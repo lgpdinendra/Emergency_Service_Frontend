@@ -74,6 +74,8 @@
     align-items: center;
     align-content: center;
     margin-left: 180px;
+    text-align: center;
+    
 }
 
 .submit{
@@ -82,9 +84,10 @@
     align-items: center;
     width: 220px;
     height: 59px;
-    color: #fff;
+    color:black;
     background: #4c00b4;
     border-radius: 50px;
+    border: #3c009d solid 1px; 
     font-size: 19px;
     font-weight: 700;
     cursor: pointer;

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import '../Style/PublicUserLogin.css';
 import axios from 'axios';
+import '../Style/Register.css';
 
 const Register = () => {
     
@@ -135,6 +136,7 @@ const Register = () => {
           className="registration-input"
         />
         </div>
+        
         </div>
 
         <div className='submit-container'>
@@ -146,6 +148,7 @@ const Register = () => {
         >
           Register
         </button>
+
         </div>
       </form>
     

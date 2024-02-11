@@ -25,7 +25,8 @@ const PublicUserLogin = () => {
       if (response.status === 200) {
         console.log('User login successfully');
         alert('User login successfully');
-        window.location.href = '/login';
+        window.location.href = '/Profile';
+        sessionStorage.setItem('loggedUserEmail', email)
         
       } else {
         console.error('Login failed');
@@ -71,7 +72,7 @@ const PublicUserLogin = () => {
 
         <div className='submit-container'>
         <button
-          type="button"
+          
           onClick={handleLogin}
           id="registerButton"
           className="submit"
