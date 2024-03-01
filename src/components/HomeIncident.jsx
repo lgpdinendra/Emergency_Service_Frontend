@@ -1,10 +1,9 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
-import '../Style/Home.css';
+import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import "../styles/HomeIncidentStyles.css"
 
-
-const Home = () => {
+const HomeIncident = () =>{
     const [locations, setLocations] = useState([]);
     const handleClick = (latitude, longitude) => {
         return (
@@ -20,10 +19,13 @@ const Home = () => {
         fetchData();
     }, []);
 
-    const fetchData = () => {
-        axios.get('http://localhost:8080/incidents')
-            .then(response => setLocations(response.data))
-            .catch(error => console.error('Error fetching locations:', error));
+    const fetchData = async () => {
+        try {
+            const response = await axios.get('http://localhost:8080/incidents');
+            setLocations(response.data);
+        } catch (error) {
+            console.error('Error fetching locations:', error);
+        }
     };
 
 
@@ -53,7 +55,7 @@ const Home = () => {
             </div>
 
             <div className="map-container">
-            <LoadScript googleMapsApiKey="AIzaSyC4NO2yZ0tRfg0pxV0h6cbFpKLRzG6NdyU">
+            <LoadScript googleMapsApiKey="AIzaSyC4NO2yZ0tRfg0pxV0h6cbFpKLRzG6NdyU" async>
                         <GoogleMap
                             mapContainerStyle={mapStyles}
                             zoom={11}
@@ -73,5 +75,4 @@ const Home = () => {
         </div>
     );
 };
-
-export default Home;
+export default HomeIncident;

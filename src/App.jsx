@@ -1,26 +1,24 @@
-import { BrowserRouter as Router, Routes,Route} from 'react-router-dom';
-import Header from './Components/Header';
-import Home from './Components/Home';
-import Register from './Components/Register';
-import PublicUserLogin from './Components/PublicUserLogin';
-import Profile from './Components/Profile';
+import { Route, Routes } from 'react-router-dom'
+import './App.css'
+import Home from './routes/Home'
+import About from './routes/About'
+import Service from './routes/Service'
+import Contact from './routes/Contact'
+
 
 function App() {
   return (
-    <div className='App'>
-      <Header/>
-      <div>
-      <Router>
-        <Routes>
-        <Route path="/"  element={<Home />} />
-        <Route path="/Register" element={<Register />} />
-        <Route path="/PublicUserLogin" element={<PublicUserLogin />} />
-        <Route path="/Profile" element={<Profile />} />
-        </Routes>
-      </Router>
+    <div className="App">
+      <div className='glass'>
+      <Routes>
+        <Route path = "/" element = {<Home/>}/>
+        <Route path = "/about" element = {<About/>}/>
+        <Route path = "/service" element = {<Service/>}/>
+        <Route path = "/contact" element = {<Contact/>}/>
+      </Routes>
       </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

@@ -17,6 +17,7 @@
     width: 50%;
     padding: 20px;
     overflow:scroll;
+    overflow-x: hidden;
     height: 600px;
     box-sizing: border-box;
 }
@@ -57,4 +58,35 @@
 .map-container .google-map {
     height: 100%;
     width: 100%;
+}
+@media screen and (max-width: 768px) {
+    .home-container {
+        flex-direction: column;
+        row-gap: 20px; /* Change column-gap to row-gap for vertical spacing */
+    }
+
+    .map-container,
+    .incident-container {
+        width: 100%;
+    }
+
+    .map-container {
+        padding: 10px; /* Adjust padding as needed */
+    }
+
+    .incident-container {
+        display: inline;
+        padding: 10px; /* Adjust padding as needed */
+        height: auto; /* Let it adjust based on content */
+        overflow-x: scroll; /* Enable horizontal scrolling */
+        overflow-y: hidden;
+        width: 100%; /* Adjust width for better responsiveness */
+    }
+
+    .map-container .google-map-container {
+        height: 300px; /* Adjust height as needed */
+    }
+    .listitem{
+        display: block;
+    }
 }
