@@ -4,12 +4,36 @@ import { MenuItems } from "./MenuItems";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import {useDispatch,useSelector} from 'react-redux';
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class NavBar extends Component{
-    state = {clicked:false}
+    
+    state = {clicked:false,
+            isLoggedIn: false,
+            userName: ""}
+
+    componentDidMount() {
+            const loggedUserName = sessionStorage.getItem('loggedUserName');
+           
+                if (loggedUserName) {
+                   
+                    this.setState({ isLoggedIn: true, userName: loggedUserName });
+                }
+            }
+
     handleClick = () => {
         this.setState({clicked: !this.state.clicked})
     }
+
+    handleLogout = () => {
+       
+        sessionStorage.clear();
+        window.location.href = '/';
+    }
+
     render(){
         return(
             <nav className="NavBarItems">
@@ -29,7 +53,23 @@ class NavBar extends Component{
                             </li>
                         )
                     })}
-                    <li><Link className="nav-links-btn" to="/signup">Sign Up</Link></li>
+                    {/* <li><Link className="nav-links-btn" to="/signup">Sign Up</Link></li> */}
+                    {this.state.isLoggedIn ? ( // Conditionally render based on isLoggedIn state
+                        
+                        // <li>
+                        //     <span className="nav-welcome">{this.state.userName}</span>
+                        // </li>
+                        <DropdownButton id="dropdown-basic-button" title={this.state.userName}>
+                            <Dropdown.Item href="#/action-1">Dashboard</Dropdown.Item>
+                            <Dropdown.Item href="#/action-2" onClick={this.handleLogout} >Log Out</Dropdown.Item>
+                            
+                        </DropdownButton>
+                    ) : (
+                        <li>
+                            
+                            <Link className="nav-links-btn" to="/signup">Sign Up</Link>
+                        </li>
+                    )}
                 </ul>
             </nav>
         )

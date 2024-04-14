@@ -3,12 +3,12 @@ import user_icon from "../assets/person.png"
 import email_icon from "../assets/email.png"
 import password_icon from "../assets/password.png"
 import NavBar from "../components/NavBar";
-import { useState } from "react";
+import { useState ,useEffect} from "react";
 import axios from "axios";
 
 
 const LoginAndRegister = () =>{
-    const[action,setAction] = useState("Login")
+    const [action,setAction] = useState("Login")
     const [email,setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [public_firstname,setFirstname] = useState('');
@@ -17,6 +17,7 @@ const LoginAndRegister = () =>{
     const [public_pnumber,setPhonenum] = useState('');
     const [conpassword,setConpassword] = useState('');
     const [public_address,setAddress] = useState('');
+    const [users, setUsers] = useState(''); 
 
 
     const handleLogin = async () => {
@@ -26,17 +27,44 @@ const LoginAndRegister = () =>{
             email,
             password,
           });
-    
+
+          
+          
           if (response.status === 200) {
             console.log('User login successfully');
-            window.location.href = '/Profile';
+            
             sessionStorage.setItem('loggedUserEmail', email)
+            sessionStorage.setItem('loggedUserName', response.data.public_firstname); 
+           
+            window.location.href = '/';
           } else {
             console.error('Login failed');
           }
         } catch (error) {
           console.error('Login error:', error.message);
         }
+
+        useEffect(() => {
+          
+          const fetchData = async (email) =>{
+           
+            try{
+              
+              const response = await fetch(`http://localhost:8080/user/${email}`);
+              
+              const data = await response.json();
+              
+              console.log(data)
+               setUsers(data);
+               
+            }catch(err){
+              setError(err.message);
+            }
+          }
+          const loggedEmail = sessionStorage.getItem('loggedUserEmail')
+          fetchData(loggedEmail);
+         
+        }, [])
       };
 
       const handleSignUp = async () => {
@@ -53,7 +81,7 @@ const LoginAndRegister = () =>{
     
           if (response.status === 200) {
             console.log('User registered successfully');
-            //alert('User registered successfully');
+          
             window.location.href = '/signup';
           } else {
             console.error('Registration failed');
