@@ -4,7 +4,6 @@ import { MenuItems } from "./MenuItems";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
-import {useDispatch,useSelector} from 'react-redux';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -13,7 +12,7 @@ class NavBar extends Component{
     
     state = {clicked:false,
             isLoggedIn: false,
-            userName: ""}
+            userName: ''}
 
     componentDidMount() {
             const loggedUserName = sessionStorage.getItem('loggedUserName');
@@ -34,7 +33,12 @@ class NavBar extends Component{
         window.location.href = '/';
     }
 
+    redirectToDashboard = () => {
+        window.location.href = '/dashboard';
+    }
+
     render(){
+        
         return(
             <nav className="NavBarItems">
                 <h1 className="navbar-logo">RapidResponse</h1>
@@ -53,14 +57,11 @@ class NavBar extends Component{
                             </li>
                         )
                     })}
-                    {/* <li><Link className="nav-links-btn" to="/signup">Sign Up</Link></li> */}
-                    {this.state.isLoggedIn ? ( // Conditionally render based on isLoggedIn state
+                
+                    {this.state.isLoggedIn ? ( 
                         
-                        // <li>
-                        //     <span className="nav-welcome">{this.state.userName}</span>
-                        // </li>
-                        <DropdownButton id="dropdown-basic-button" title={this.state.userName}>
-                            <Dropdown.Item href="#/action-1">Dashboard</Dropdown.Item>
+                        <DropdownButton title={this.state.userName}>
+                            <Dropdown.Item href="#/action-1" onClick={this.redirectToDashboard}>Dashboard</Dropdown.Item>
                             <Dropdown.Item href="#/action-2" onClick={this.handleLogout} >Log Out</Dropdown.Item>
                             
                         </DropdownButton>

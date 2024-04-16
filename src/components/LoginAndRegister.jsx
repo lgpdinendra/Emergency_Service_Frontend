@@ -6,6 +6,8 @@ import NavBar from "../components/NavBar";
 import { useState ,useEffect} from "react";
 import axios from "axios";
 
+import ProjectFooter from "./ProjectFooter"
+
 
 const LoginAndRegister = () =>{
     const [action,setAction] = useState("Login")
@@ -32,9 +34,11 @@ const LoginAndRegister = () =>{
           
           if (response.status === 200) {
             console.log('User login successfully');
+
+            const { email, public_firstname } = response.data;
             
-            sessionStorage.setItem('loggedUserEmail', email)
-            sessionStorage.setItem('loggedUserName', response.data.public_firstname); 
+            sessionStorage.setItem('loggedUserEmail', email);
+            sessionStorage.setItem('loggedUserName', public_firstname); 
            
             window.location.href = '/';
           } else {
@@ -181,6 +185,7 @@ const LoginAndRegister = () =>{
         </div>
         </div>
         </div>
+        <ProjectFooter/>
         </>
     )
 }

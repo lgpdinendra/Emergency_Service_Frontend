@@ -5,7 +5,7 @@ function Hero (props){
     <div className = {props.pName}>
         <img alt="HeroImg" src ={props.heroImg} />
         
-        <div className="hero-text">
+        <div className={props.pName + "-text"}>
             <h1>{props.title}</h1>
             <p>{props.text}</p>
             <a href = {props.url} className={props.btnClass}>

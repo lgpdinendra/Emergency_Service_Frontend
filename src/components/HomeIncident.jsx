@@ -55,7 +55,7 @@ const HomeIncident = () =>{
             </div>
 
             <div className="map-container">
-            <LoadScript googleMapsApiKey="AIzaSyC4NO2yZ0tRfg0pxV0h6cbFpKLRzG6NdyU" async>
+            <LoadScript googleMapsApiKey="AIzaSyBQhG1GJ6hnWqTTNK1Y1lNy_i20wgDxleA" async>
                         <GoogleMap
                             mapContainerStyle={mapStyles}
                             zoom={11}
