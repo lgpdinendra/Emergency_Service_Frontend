@@ -5,8 +5,6 @@ import "./AreaCards.scss";
 const AreaCards = () => {
   const [userCount, setUserCount] = useState(null);
   const [incidentCount, setIncidentCount] = useState(null);
-  const [serviceCount, setServiceCount] = useState(null);
-
 
   useEffect(() => {
     const fetchUserCount = async () => {
@@ -43,23 +41,6 @@ const AreaCards = () => {
 
     fetchIncidentCount();
   }, []);
-  useEffect(() => {
-    const fetchUserCount = async () => {
-      try {
-        const response = await fetch("http://localhost:8080/service/Usercount");
-        if (response.ok) {
-          const data = await response.json();
-          setServiceCount(data);
-        } else {
-          console.error("Failed to fetch user count");
-        }
-      } catch (error) {
-        console.error("Error fetching user count:", error);
-      }
-    };
-
-    fetchUserCount();
-  }, []);
 
   return (
     <section className="content-area-cards">
@@ -77,15 +58,6 @@ const AreaCards = () => {
         cardInfo={{
           title: "Total Number of Emergency Incidents Reported",
           value: `${incidentCount ? incidentCount.toLocaleString() : "Loading..."}`,
-          text: "Since 2024-January-01"
-        }}
-      />
-
-      <AreaCard
-        colors={["#e4e8ef", "#475be8"]}
-        cardInfo={{
-          title: "Total Number of Emergency Services Registered",
-          value: `${serviceCount ? serviceCount.toLocaleString() : "Loading..."}`,
           text: "Since 2024-January-01"
         }}
       />

@@ -1,5 +1,7 @@
+import React from "react";
 import Hero from "../components/Hero";
 import NavBar from "../components/NavBar";
+import MainPage from "./ServiceComponent/MainPage";
 import ProjectFooter from "../components/ProjectFooter"
 
 import './ServiceStyle.css'
@@ -14,10 +16,7 @@ function Service (){
             title = "Our Services"
             text = "Your gateway to quick, reliable assistance when it matters most! Here, you'll find everything from ambulance rides for emergencies to fire heroes tackling blazes. Our rescue teams are ready for natural disasters like floods or landslides, and our vehicle carriers are on standby for stranded cars. Trust us to be your first responders, always just a click away!"
         />
-
-
-
-        <ProjectFooter/>
+        
         </>
     )
 }
