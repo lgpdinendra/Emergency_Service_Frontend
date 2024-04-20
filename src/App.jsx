@@ -7,6 +7,7 @@ import Contact from './routes/Contact'
 import LoginAndRegister from './components/LoginAndRegister'
 import Dashboard from './components/DashBoard/dashbord'
 import PageNotFound from './components/DashBoard/screens/PageNotFound'
+import Incident from './components/DashBoard/incident'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path = "/contact" element = {<Contact/>}/>
         <Route path = "/signup" element = {<LoginAndRegister/>}/>
         <Route path = "/dashboard" element = {<Dashboard/>}/>
+        <Route path = "/dashboard/reportIncident" element={<Incident/>}/>
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       </div>

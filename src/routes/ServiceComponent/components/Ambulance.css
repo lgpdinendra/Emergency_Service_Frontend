@@ -1,0 +1,63 @@
+.item-info{
+   margin-top: 0;
+   
+   height: 12rem;
+    width: 25rem;
+    padding-left: 1rem;
+
+}
+
+.item-info-description{
+    font-size: 0.9rem;
+}
+
+.item-info-name{
+    
+}
+.item-info-location{
+
+}
+.item-info-description{
+
+}
+.item-info-contact{
+    line-height: 1rem;
+}
+
+.ambulance-image {
+    width: 15rem; /* Adjust the width as needed */
+    height: 12rem; /* Maintain aspect ratio */
+    margin-left: 0; /* Adjust margin as needed */
+    border-radius: 1rem; /* Adjust border-radius as needed */
+  }
+  
+  .main-bar{
+    display: flex;
+    height: 12rem;
+    width: 40rem;
+    background-color: rgb(100, 152, 169);
+    padding-left: 0rem;
+    padding-right: 1rem;
+    padding-top: 0.1rem;
+    line-height: 1rem;
+    margin-left: 1rem;
+    margin-top: 1rem;
+    border-radius: 1rem;
+  }
+  .image-bar{
+    flex: 1;
+  }
+  .bar-list{
+    flex: 1;
+  }
+
+  .main-bar:hover{
+    
+    color: white;
+    box-shadow: 1rem;
+    margin-top: 0;
+    box-shadow: 10px 10px 5px lightblue;
+    height: 12rem;
+    width: 40rem;
+    padding-left: 1rem;
+}

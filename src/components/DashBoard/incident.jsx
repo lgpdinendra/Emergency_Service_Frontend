@@ -3,16 +3,16 @@ import "./dashbord.scss";
 import { SidebarProvider } from "./context/SideBarContext";
 import { Route, Routes } from "react-router-dom";
 import BaseLayout from "./layout/BaseLayout";
-import DashboardScreen from "./screens/DashboardScreen";
+import { IncidentUpdate } from "./screens";
 
-const Dashboard = () => {
+const Incident = () => {
   return (
   
   <SidebarProvider>
   <NavBar/>
         <Routes>
           <Route element={<BaseLayout />}>
-            <Route path="/" element={<DashboardScreen />} />
+            <Route path="/" element={<IncidentUpdate />} />
           </Route>
         </Routes>
   </SidebarProvider>
@@ -20,4 +20,4 @@ const Dashboard = () => {
   );
 }
 
-export default Dashboard
+export default Incident
