@@ -10,7 +10,6 @@ import {
   MdOutlineSettings,
 } from "react-icons/md";
 import { PiStudentBold } from "react-icons/pi";
-import { SiGoogleclassroom } from "react-icons/si";
 
 import { Link } from "react-router-dom";
 import "./Sidebar.scss";
@@ -65,40 +64,32 @@ const Sidebar = () => {
               </Link>
             </li>
             <li className="menu-item">
-              <Link to="/dashboard" className={action==="services"?"menu-link active":"menu-link"} onClick={ () => setAction("services")}>
+              <Link to="/services" className={action==="services"?"menu-link active":"menu-link"} onClick={ () => setAction("services")}>
                 <span className="menu-link-icon">
                   <LiaChalkboardTeacherSolid size={20} />
                 </span>
-                <span className="menu-link-text">Teachers</span>
+                <span className="menu-link-text">Services</span>
               </Link>
             </li>
             <li className="menu-item">
-              <Link to="/" className="menu-link">
+              <Link to="/dashboard" className={action==="services"?"menu-link active":"menu-link"} onClick={ () => setAction("services")}>
                 <span className="menu-link-icon">
                   <PiStudentBold size={20} />
                 </span>
-                <span className="menu-link-text">Students</span>
+                <span className="menu-link-text">Public Users</span>
               </Link>
             </li>
             <li className="menu-item">
-              <Link to="/" className="menu-link">
+              <Link to="/dashboard/reportIncident" className={action==="services"?"menu-link active":"menu-link"} onClick={ () => setAction("services")}>
                 <span className="menu-link-icon">
                   <MdOutlineCurrencyExchange size={18} />
                 </span>
-                <span className="menu-link-text">Transactions</span>
-              </Link>
-            </li>
-            <li className="menu-item">
-              <Link to="/" className="menu-link">
-                <span className="menu-link-icon">
-                  <SiGoogleclassroom size={20} />
-                </span>
-                <span className="menu-link-text">Classes</span>
+                <span className="menu-link-text">Incidents</span>
               </Link>
             </li>
             
             <li className="menu-item">
-              <Link to="/" className="menu-link">
+              <Link to="/dashboard" className={action==="services"?"menu-link active":"menu-link"} onClick={ () => setAction("services")}>
                 <span className="menu-link-icon">
                   <MdOutlineMessage size={18} />
                 </span>
@@ -111,15 +102,15 @@ const Sidebar = () => {
         <div className="sidebar-menu sidebar-menu2">
           <ul className="menu-list">
             <li className="menu-item">
-              <Link to="/" className="menu-link">
+              <Link to="/" className={action==="services"?"menu-link active":"menu-link"} onClick={ () => setAction("services")}>
                 <span className="menu-link-icon">
                   <MdOutlineSettings size={20} />
                 </span>
-                <span className="menu-link-text">Settings</span>
+                <span className="menu-link-text">Profile</span>
               </Link>
             </li>
             <li className="menu-item">
-              <Link to="/" className="menu-link">
+              <Link to="/" className={action==="services"?"menu-link active":"menu-link"} onClick={ () => setAction("services")}>
                 <span className="menu-link-icon">
                   <MdOutlineLogout size={20} />
                 </span>

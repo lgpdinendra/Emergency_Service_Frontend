@@ -1,9 +1,9 @@
-//import { AreaCards, AreaCharts, AreaTable, AreaTop } from "../dashbordComponents";
+import MapComponent from "../../MapComponent/MapComponent";
 
 const IncidentScreen = () => {
   return (
-    <div className="content-area">
-
+      <div className="content-area">
+      <MapComponent/>
     </div>
   );
 };

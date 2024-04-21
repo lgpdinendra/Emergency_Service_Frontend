@@ -7,81 +7,79 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import { FaArrowUpLong } from "react-icons/fa6";
 import "./AreaCharts.scss";
 
 const data = [
   {
     month: "Jan",
-    loss: 70,
-    profit: 100,
+    IncidentCount: 2,
   },
   {
     month: "Feb",
-    loss: 55,
-    profit: 85,
+    IncidentCount: 0,
   },
   {
     month: "Mar",
-    loss: 35,
-    profit: 90,
+    IncidentCount: 0,
   },
   {
     month: "April",
-    loss: 90,
-    profit: 70,
+    IncidentCount: 4,
   },
   {
     month: "May",
-    loss: 55,
-    profit: 80,
+    IncidentCount: 0,
   },
   {
     month: "Jun",
-    loss: 30,
-    profit: 50,
+    IncidentCount: 0,
   },
   {
     month: "Jul",
-    loss: 32,
-    profit: 75,
+    IncidentCount: 0,
   },
   {
     month: "Aug",
-    loss: 62,
-    profit: 86,
+    IncidentCount: 0,
   },
   {
     month: "Sep",
-    loss: 55,
-    profit: 78,
+    IncidentCount: 0,
+  },
+  {
+    month: "Oct",
+    IncidentCount: 0,
+  },
+  {
+    month: "Nov",
+    IncidentCount: 0,
+  },
+  {
+    month: "Sep",
+    IncidentCount: 0,
   },
 ];
 
 const AreaBarChart = () => {
 
-  const formatTooltipValue = (value) => {
-    return `${value}k`;
-  };
+const formatTooltipValue = (value) => {
+  return `${parseInt(value)}`;
+};
 
-  const formatYAxisLabel = (value) => {
-    return `${value}k`;
-  };
+const formatYAxisLabel = (value) => {
+  return `${parseInt(value)}`;
+};
 
-  const formatLegendValue = (value) => {
-    return value.charAt(0).toUpperCase() + value.slice(1);
-  };
+const formatLegendValue = (value) => {
+  return `${parseInt(value)}${value.charAt(0).toUpperCase() + value.slice(1)}`;
+};
+
 
   return (
     <div className="bar-chart">
       <div className="bar-chart-info">
-        <h5 className="bar-chart-title">Total Revenue From Class Fees</h5>
+        <h5 className="bar-chart-title">All Reported Emegency This Year</h5>
         <div className="chart-info-data">
-          <div className="info-data-value">Rs.30 000.00</div>
-          <div className="info-data-text">
-            <FaArrowUpLong />
-            <p>2% than last month.</p>
-          </div>
         </div>
       </div>
       <div className="bar-chart-wrapper">
@@ -108,15 +106,15 @@ const AreaBarChart = () => {
               }}
             />
             <YAxis
-              padding={{ bottom: 10, top: 10 }}
-              tickFormatter={formatYAxisLabel}
-              tickCount={6}
-              axisLine={false}
-              tickSize={0}
-              tick={{
-                fill: `#676767`,
+            padding={{ bottom: 10, top: 10 }}
+            tickFormatter={formatYAxisLabel}
+            domain={[0, Math.max(...data.map(entry => entry.IncidentCount))]}
+            axisLine={false}
+            tickSize={0}
+            tick={{
+              fill: `#676767`,
               }}
-            />
+              />
             <Tooltip
               formatter={formatTooltipValue}
               cursor={{ fill: "transparent" }}
@@ -129,7 +127,7 @@ const AreaBarChart = () => {
               formatter={formatLegendValue}
             />
             <Bar
-              dataKey="profit"
+              dataKey="IncidentCount"
               fill="#475be8"
               activeBar={false}
               isAnimationActive={false}
