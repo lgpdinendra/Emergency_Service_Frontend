@@ -12,10 +12,10 @@ export const MenuItems = [
         icon : "fa-solid fa-briefcase"
     },
     {
-        title : "Guidance",
-        url : "/guidance",
+        title : "Contact",
+        url : "/contact",
         cName : "nav-links",
-        icon : "fa-solid fa-briefcase"
+        icon : "fa-solid fa-address-book"
     },
     {
         title : "About",

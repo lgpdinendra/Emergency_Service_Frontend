@@ -21,14 +21,6 @@
     color: #222;
     font-size: 2rem;
     cursor: pointer;
-    display: flex;
-}
-
-.logo-image{
-    margin-top: -5px;
-    width: 4rem;
-    float: left;
-    margin-right: 10px;
 }
 
 .nav-menu {
