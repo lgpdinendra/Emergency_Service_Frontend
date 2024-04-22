@@ -7,6 +7,7 @@ import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import RapidResponseLogo from '../assets/RapiResponseLogo.jpg';
 
 class NavBar extends Component{
     
@@ -41,7 +42,9 @@ class NavBar extends Component{
         
         return(
             <nav className="NavBarItems">
-                <h1 className="navbar-logo">RapidResponse</h1>
+                <h1 className="navbar-logo">
+                <img src={RapidResponseLogo} alt="Logo" className="logo-image" />
+                RapidResponse</h1>
                 <div className="menu-icon" onClick={this.handleClick}>
                 <FontAwesomeIcon icon={this.state.clicked ? faTimes : faBars} />
                 </div>

@@ -1,0 +1,47 @@
+/* Style for the main container holding the cards */
+.containers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centers cards horizontally */
+  gap: 20px; /* Sets a gap of 20px between each card */
+  margin: 1rem auto; /* Centers the container and provides some spacing from the viewport edges */
+  max-width: 1366px; /* Optional: Limit max width of the container */
+}
+
+/* Style for the link wrapper around the cards to remove text decorations and inherit text colors */
+.links {
+  text-decoration: none;
+  color: inherit; /* Ensures text inherits color, useful if Typography component has specific colors */
+}
+
+/* Styles for the cards ensuring uniform height and center alignment */
+.card-1, .card-2, .card-3, .card-4 {
+  flex: 1 1 300px; /* Allows flex items to grow and shrink from a base width of 300px */
+  display: flex;
+  flex-direction: column; /* Stacks children vertically */
+  justify-content: space-between; /* Distributes space to align content vertically */
+  min-height: 700px; /* Minimum height to ensure cards are uniform, adjust as needed */
+  align-items: center; /* Centers content horizontally */
+}
+
+/* Styles for the main wrapper to ensure it fills the viewport and centers its children */
+.mains {
+  display: flex;
+  justify-content: center; /* Centers the '.container' within '.main' */
+  align-items: center; /* Centers content vertically within the entire viewport */
+  min-height: 100vh; /* Ensures '.main' takes at least the height of the viewport */
+}
+
+/* Responsive adjustments for smaller screens */
+@media screen and (max-width: 800px) {
+  .containers {
+    flex-direction: column; /* Stacks cards vertically on smaller screens */
+    gap: 10px; /* Adjusts the gap for smaller screens */
+  }
+  
+  .card-1, .card-2, .card-3, .card-4 {
+    flex-basis: 100%; /* Makes each card take full width of the container */
+    max-width: 345px; /* Aligns with the max-width set in your component's style */
+    min-height: auto; /* Allows the height to adjust to content on smaller screens */
+  }
+}

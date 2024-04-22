@@ -108,7 +108,8 @@ const LoginAndRegister = () =>{
         <>
         <div className="logingBack">
         <div className="logandreg">
-        <img alt="HeroImg" src ="https://thamesgroupuk.com/wp-content/uploads/2019/04/heroimagegraphic.png"/>
+        <img alt="HeroImg" src ="https://thamesgroupuk.com/wp-content/uploads/2019/04/heroimagegraphic.png"
+        className="heroimg"/>
         <NavBar/>
         <div className={action==="Login"?"Logincontainer":"Signcontainer"}>
             <div className="Signheader">
