@@ -74,10 +74,10 @@ const LoginAndRegister = () =>{
     
     const isEmpty = (value) => value.trim() === '';
 
-    const isValidPassword = (password) => {
-      const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d])[A-Za-z\d[^A-Za-z\d]]{8,}$/;
-      return re.test(String(password));
-  }
+  //   const isValidPassword = (password) => {
+  //     const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d])[A-Za-z\d[^A-Za-z\d]]{8,}$/;
+  //     return re.test(String(password));
+  // }
     
     const arePasswordsMatching = (password, confirmPassword) => password === confirmPassword;
     
@@ -107,22 +107,40 @@ const LoginAndRegister = () =>{
 
         const handleServiceLogin = async () => {
           try {
-            const response = await axios.post('http://localhost:8080/service/login', { email, password });
+            const response = await axios.post('http://localhost:8080/admin/login', { email, password });
             if (response.status === 200) {
-              updateSessionStorage(response.data, 'servicName');
+              updateSessionStorage(response.data);
+              window.location.href = '/';
+            }
+          } catch (error) {
+            if (error.response.data === "User does not exist") {
+              await handleAdminLogin();
+            } else {
+              ErrorNotify(error.response.data);
+            }
+          }
+        };
+        
+
+        const handleAdminLogin = async () => {
+          try {
+            const response = await axios.post('http://localhost:8080/admin/login', { email, password });
+            if (response.status === 200) {
+              updateSessionStorage(response.data);
               window.location.href = '/';
             }
           } catch (error) {
             ErrorNotify(error.response.data);
           }
         };
-        const updateSessionStorage = ({ email, publicName, serviceName, Role }) => {
+        const updateSessionStorage = ({ email, publicName, serviceName, adminName, role, Role }) => {
           sessionStorage.setItem('loggedUserEmail', email);
-          sessionStorage.setItem('loggedUserName', publicName || serviceName);
-          sessionStorage.setItem('loggedUserRole', Role);
+          sessionStorage.setItem('loggedUserName', publicName||serviceName||adminName);
+          sessionStorage.setItem('loggedUserRole', role||Role);
         };
+
     const handleSignUp = async () => {
-      if (isEmpty(email) || isEmpty(password) || (action === "Sign Up" && isValidPassword(password) && (isEmpty(publicName) || isEmpty(publicNic) || isEmpty(publicPnumber) || isEmpty(publicAddress)))) {
+      if (isEmpty(email) || isEmpty(password) || (action === "Sign Up" && (isEmpty(publicName) || isEmpty(publicNic) || isEmpty(publicPnumber) || isEmpty(publicAddress)))) {
         ErrorNotify('Please fill in all required fields.');
         return;
       }
@@ -131,6 +149,11 @@ const LoginAndRegister = () =>{
         ErrorNotify('Invalid email format.');
         return;
       }
+
+      // if(!isValidPassword(password)){
+      //   ErrorNotify('Your password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one digit, and one special character (e.g., !, @, #, ?).')
+      //   return; 
+      // }
     
       if (action === "Sign Up" && !arePasswordsMatching(password, conpassword)) {
         ErrorNotify('Passwords do not match.');
@@ -154,8 +177,8 @@ const LoginAndRegister = () =>{
             serviceType,
             email,
             serviceRegnumber: publicNic,
-            public_service: publicPnumber,
-            service_address: publicAddress,
+            servicePnumber: publicPnumber,
+            serviceAddress: publicAddress,
             password,
           });
         }

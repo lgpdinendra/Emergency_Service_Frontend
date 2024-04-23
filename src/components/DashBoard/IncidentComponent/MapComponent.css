@@ -1,0 +1,88 @@
+.SIcontainer {
+    display: flex;
+    column-gap: 20px;
+}
+
+.Smap-container {
+    width: 900px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.Sform-container{
+    width: 900px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.Scontainer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.Sform-container {
+    width: 45%;
+}
+
+.Sform-container h2 {
+    margin-bottom: 15px;
+}
+
+.Sform-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.Sform-container div {
+    margin-bottom: 10px;
+}
+
+.Sselect{
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.Sform-container label {
+    font-weight: bold;
+}
+
+.Sform-container input[type="text"],
+.Sform-container input[type="email"],
+.Sform-container input[type="password"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.Sform-container button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.Sform-container button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.Smap-container {
+    width: 50%;
+}
+
+.Smap-container .google-map-container {
+    height: 550px;
+    width: 100%;
+}
+
+.Smap-container .google-map {
+    height: 100%;
+    width: 100%;
+}

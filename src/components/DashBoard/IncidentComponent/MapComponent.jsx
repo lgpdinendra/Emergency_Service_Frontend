@@ -1,9 +1,12 @@
-import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import './MapComponent.css';
 
-const IncidentScreen = () => {
-  const [locations, setLocations] = useState([]);
+const MapComponent = () => {
+    const [locations, setLocations] = useState([]);
+    const [incidentStatus,setIncidentStatus] = useState('');
+    const [incidentService,setIncidentService] = useState('');
     const [selectedLocation, setSelectedLocation] = useState(null);
     const [formData, setFormData] = useState({
         locationName: '',
@@ -38,38 +41,41 @@ const IncidentScreen = () => {
             [name]: value
         }));
         if (value.trim() === '') {
-            setSubmitEnabled(false); // Disable submit button if any field is empty
+            setSubmitEnabled(false); 
         } else {
-            setSubmitEnabled(true); // Enable submit button if all fields are filled
+            setSubmitEnabled(true); 
         }
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (selectedLocation) {
-            console.log('Form submitted!', formData);
-            axios.post('http://localhost:8080/incidents/new', {
-                locationName: formData.locationName,
-                status: formData.status,
-                type: formData.type,
-                department: formData.department,
-                latitude: selectedLocation.latitude,
-                longitude: selectedLocation.longitude
-            })
-                .then(response => {
-                    console.log('Location added:', response.data);
-                    fetchData();
-                    setSelectedLocation(null);
-                    setFormData({
-                        locationName: '',
-                        status: '',
-                        type: '',
-                        department: ''
-                    });
-                    setSubmitEnabled(false);
-                })
-                .catch(error => console.error('Error adding location:', error));
+        if (!selectedLocation || formData.locationName.trim() === '') {
+            console.error('Invalid form data');
+            return;
         }
+        axios.post('http://localhost:8080/incidents/new', {
+            locationName: formData.locationName,
+            status: incidentStatus,
+            type: formData.type,
+            department: incidentService,
+            latitude: selectedLocation.latitude,
+            longitude: selectedLocation.longitude
+        })
+        .then(response => {
+            console.log('Location added:', response.data);
+            fetchData();
+            setSelectedLocation(null);
+            setFormData({
+                locationName: '',
+                status: '',
+                type: '',
+                department: ''
+            });
+            setIncidentStatus('');
+            setIncidentService('');
+            setSubmitEnabled(false);
+        })
+        .catch(error => console.error('Error adding location:', error));
     };
 
     const mapStyles = {
@@ -77,10 +83,18 @@ const IncidentScreen = () => {
         width: '100%',
     };
 
+    const handleIncidentStatus = (event) => {
+        setIncidentStatus(event.target.value);
+    };
+
+    const handleService = (event) => {
+        setIncidentService(event.target.value);
+    };
+
     return (
-        <div className="Icontainer">
-            <div className="form-container">
-                <h2>Form</h2>
+        <div className="SIcontainer">
+            <div className="Sform-container">
+                <h2>Report Incident </h2>
                 <form onSubmit={handleSubmit}>
                     <div>
                         <label>Location Name:</label>
@@ -88,15 +102,25 @@ const IncidentScreen = () => {
                     </div>
                     <div>
                         <label>Status:</label>
-                        <input type="text" name="status" value={formData.status} onChange={handleChange}/>
+                        <select className='Sselect' onChange={handleIncidentStatus}>
+                            <option value="Pending">Pending</option>
+                            <option value="Responded">Responded</option>
+                            <option value="Controlled">Controlled</option>
+                            <option value="Out of Controll">Out of Controll</option>
+                        </select>
                     </div>
                     <div>
-                        <label>Type:</label>
+                        <label>Discription:</label>
                         <input type="text" name="type" value={formData.type} onChange={handleChange}/>
                     </div>
                     <div>
                         <label>Department:</label>
-                        <input type="text" name="department" value={formData.department} onChange={handleChange}/>
+                        <select className='Sselect' name="serviceType" onChange={handleService}>
+                            <option value="Ambulance Service">Ambulance Service</option>
+                            <option value="Fire and Rescue">Fire and Rescue</option>
+                            <option value="Vehicle Recovery Service">Vehicle Recovery Service</option>
+                            <option value="Flood and Natural Disaster">Flood and Natural Disaster</option>
+                        </select>
                     </div>
                     <div>
                         <label>Selected Location:</label>
@@ -111,7 +135,7 @@ const IncidentScreen = () => {
                 </form>
 
             </div>
-            <div className="map-container">
+            <div className="Smap-container">
                 <LoadScript googleMapsApiKey="AIzaSyBQhG1GJ6hnWqTTNK1Y1lNy_i20wgDxleA">
                     <GoogleMap
                         mapContainerStyle={mapStyles}
@@ -145,4 +169,4 @@ const IncidentScreen = () => {
     );
 };
 
-export default IncidentScreen;
+export default MapComponent;

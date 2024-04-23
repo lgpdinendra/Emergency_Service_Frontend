@@ -1,8 +1,5 @@
-import React from 'react'
+
 import './HomeEmergencyKit.css';
-import Kit from '../assets/images/kit.jpg'
-import FireI from '../assets/images/fire.jpg';
-import FireCover from '../assets/images/firecover.jpeg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Con1 from '../assets/images/contact1.png';
 import Con2 from '../assets/images/contact2.png';

@@ -1,7 +1,7 @@
 import { Component } from "react";
 import "../styles/NavBarStyles.css"
 import { MenuItems } from "./MenuItems";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import Dropdown from 'react-bootstrap/Dropdown';
@@ -10,36 +10,38 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import RapidResponseLogo from '../assets/RapiResponseLogo.jpg';
 
 class NavBar extends Component{
-    
+
     state = {clicked:false,
             isLoggedIn: false,
             userName: ''}
+            
 
     componentDidMount() {
-            const loggedUserName = sessionStorage.getItem('loggedUserName');
-           
-                if (loggedUserName) {
-                   
-                    this.setState({ isLoggedIn: true, userName: loggedUserName });
-                }
-            }
+        const loggedUserName = sessionStorage.getItem('loggedUserName');
+        const loggedUserRole = sessionStorage.getItem('loggedUserRole');
+        
+        if (loggedUserName) {
+            this.setState({ isLoggedIn: true, userName: loggedUserName, userRole: loggedUserRole });
+        }
+    }
 
     handleClick = () => {
         this.setState({clicked: !this.state.clicked})
     }
 
     handleLogout = () => {
-       
         sessionStorage.clear();
         window.location.href = '/';
-    }
+    };
 
     redirectToDashboard = () => {
-        window.location.href = '/dashboard';
-    }
+        const { userRole } = this.state;
+        if (userRole === "ServiceUsers" || userRole === "PublicUsers") {
+            window.location.href = '/dashboard';
+        }
+    };
 
     render(){
-        
         return(
             <nav className="NavBarItems">
                 <h1 className="navbar-logo">

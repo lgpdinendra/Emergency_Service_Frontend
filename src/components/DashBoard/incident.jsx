@@ -4,10 +4,10 @@ import NavBar from "../NavBar";
 import "./dashbord.scss";
 import { SidebarProvider } from "./context/SideBarContext";
 import BaseLayout from "./layout/BaseLayout";
-import DashboardScreen from "./screens/DashboardScreen";
 import PageNotFound from "./screens/PageNotFound";
+import Map from './IncidentComponent/MapComponent';
 
-function Dashboard() {
+function Incidents() {
   const [isAuthorized, setIsAuthorized] = useState(false);
   const navigate = useNavigate();
 
@@ -19,7 +19,7 @@ function Dashboard() {
       return;
     }
 
-    setIsAuthorized(loggedUserRole === "Admin");
+    setIsAuthorized(loggedUserRole === "ServiceUsers");
   }, [navigate]);
 
   if (!isAuthorized) {
@@ -31,7 +31,7 @@ function Dashboard() {
       <NavBar />
       <Routes>
         <Route element={<BaseLayout />}>
-          <Route path="/" element={<DashboardScreen />} />
+          <Route path='/' element={<Map/>}/>
           <Route path="*" element={<PageNotFound/>} />
         </Route>
       </Routes>
@@ -39,4 +39,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default Incidents;

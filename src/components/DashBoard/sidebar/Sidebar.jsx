@@ -3,14 +3,9 @@ import LogoBlue from "../assets/logo_blue.svg";
 import { LiaChalkboardTeacherSolid } from "react-icons/lia";
 import {
   MdOutlineClose,
-  MdOutlineCurrencyExchange,
   MdOutlineGridView,
-  MdOutlineLogout,
-  MdOutlineMessage,
-  MdOutlineSettings,
 } from "react-icons/md";
 import { PiStudentBold } from "react-icons/pi";
-import { SiGoogleclassroom } from "react-icons/si";
 
 import { Link } from "react-router-dom";
 import "./Sidebar.scss";
@@ -19,7 +14,7 @@ import { SidebarContext } from "../context/SideBarContext";
 const Sidebar = () => {
   const { isSidebarOpen, closeSidebar } = useContext(SidebarContext);
   const navbarRef = useRef(null);
-  const [action,setAction] = useState("dashbord")
+  const [action,setAction] = useState("")
 
   // closing the navbar when clicked outside the sidebar area
   const handleClickOutside = (event) => {
@@ -65,65 +60,27 @@ const Sidebar = () => {
               </Link>
             </li>
             <li className="menu-item">
-              <Link to="/dashboard" className={action==="services"?"menu-link active":"menu-link"} onClick={ () => setAction("services")}>
+              <Link to="/dashboard/incident" className={action==="incident"?"menu-link ":"menu-link"} onClick={ () => setAction("incident")}>
                 <span className="menu-link-icon">
                   <LiaChalkboardTeacherSolid size={20} />
                 </span>
-                <span className="menu-link-text">Teachers</span>
+                <span className="menu-link-text">Incident</span>
               </Link>
             </li>
             <li className="menu-item">
-              <Link to="/" className="menu-link">
+              <Link to="/dashboard/services" className={action==="Service"?"menu-link ":"menu-link"} onClick={ () => setAction("Service")}>
+                <span className="menu-link-icon">
+                  <PiStudentBold size={18} />
+                </span>
+                <span className="menu-link-text">Service Users</span>
+              </Link>
+            </li>
+            <li className="menu-item">
+              <Link to="/dashboard/users" className={action==="Users"?"menu-link ":"menu-link"} onClick={ () => setAction("Users")}>
                 <span className="menu-link-icon">
                   <PiStudentBold size={20} />
                 </span>
-                <span className="menu-link-text">Students</span>
-              </Link>
-            </li>
-            <li className="menu-item">
-              <Link to="/" className="menu-link">
-                <span className="menu-link-icon">
-                  <MdOutlineCurrencyExchange size={18} />
-                </span>
-                <span className="menu-link-text">Transactions</span>
-              </Link>
-            </li>
-            <li className="menu-item">
-              <Link to="/" className="menu-link">
-                <span className="menu-link-icon">
-                  <SiGoogleclassroom size={20} />
-                </span>
-                <span className="menu-link-text">Classes</span>
-              </Link>
-            </li>
-            
-            <li className="menu-item">
-              <Link to="/" className="menu-link">
-                <span className="menu-link-icon">
-                  <MdOutlineMessage size={18} />
-                </span>
-                <span className="menu-link-text">Messages</span>
-              </Link>
-            </li>
-          </ul>
-        </div>
-
-        <div className="sidebar-menu sidebar-menu2">
-          <ul className="menu-list">
-            <li className="menu-item">
-              <Link to="/" className="menu-link">
-                <span className="menu-link-icon">
-                  <MdOutlineSettings size={20} />
-                </span>
-                <span className="menu-link-text">Settings</span>
-              </Link>
-            </li>
-            <li className="menu-item">
-              <Link to="/" className="menu-link">
-                <span className="menu-link-icon">
-                  <MdOutlineLogout size={20} />
-                </span>
-                <span className="menu-link-text">Logout</span>
+                <span className="menu-link-text">public Users</span>
               </Link>
             </li>
           </ul>

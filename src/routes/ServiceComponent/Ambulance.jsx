@@ -1,23 +1,32 @@
 import './Ambulance.css'
-import AmbulanceIm from '../ServiceComponent/images/ambulance.jpg'
 import NavBar from '../../components/NavBar';
 import Hero from '../../components/Hero';
 import ProjectFooter from "./ProjectFooter"
+import axios from 'axios';
+import { useState,useEffect, } from 'react';
+import { Link } from 'react-router-dom';
+import { Card } from 'react-bootstrap';
+import { CardActionArea, CardContent, CardMedia, Typography } from '@mui/material';
 
-const data = [
-    {
-      id: 1,
-      company_name: "Dj Company",
-      location:"Gampha",
-      description:"With it installed in the code editor you are using, you can type “lorem” and then tab and it will expand into a paragraph of Lorem Ipsum placeholder text.",
-      contact_no:"+9478905673",
-      imageSrc: AmbulanceIm,
-      
-    },
-  ];
 const Ambulance = () => {
+  const cardStyle = { maxWidth: 345, height: 370 };
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+}, []);
+
+  const fetchData = async () => {
+    try {
+        const response = await axios.get('http://localhost:8080/service/by-service-type/Ambulance Service');
+        setServices(response.data);
+    } catch (error) {
+        console.error(error);
+    }
+  };
+
   return (
-    <div>
+    <div className='servicePages'>
       <NavBar/>
             <Hero
                 pName="service"
@@ -25,43 +34,45 @@ const Ambulance = () => {
                 title="Ambulance Service"
                 text="When an emergency strikes and every second counts, ambulance services are there to offer quick medical help and a safe ride to the hospital. They're the first responders who jump into action to ensure that you get the care you need, right when you need it the most."
             />
-     <div className="progress-bar1">
-        <div className="progress-bar-info1">
-        </div>
-        <div className='main-bar'>
-        <div className='image-bar'>
-        {data?.map((service) => {
-            return (
-              <div className="progress-bar-item1" key={service.id}>
-                
-                <img src={service.imageSrc} alt="Ambulance" className="ambulance-image" />
-                 
-                  
-                
-               
-              </div>
-            );
-          })}
-        </div>
-        <div className="bar-list">
-          {data?.map((service) => {
-            return (
-              <div className="progress-bar-item1" key={service.id}>
-                <div className="item-info">
-                
-                  <h4 className="item-info-name">Company Name : {service.company_name}</h4>
-                  <h5 className="item-info-location">Location : {service.location}</h5>
-                  <p className="item-info-description"><b>Description : </b>{service.description}</p>
-                  <h5 className="item-info-contact">Contact No : {service.contact_no}</h5>
-                  
+            {/* <div className="sincident-container ">
+                        {services.map(services => (
+                            <div key={services.id} className="slistitem">
+                                <h3>{services.serviceName} </h3>
+                            </div>
+                        ))}
+                    </div> */}
+
+<div className='mains'>
+      <div className='containers'>
+      {services.map(services => (
+                            <div key={services.id} className="slistitem">
+                                <Link className='links'>
+          <Card sx={cardStyle}>
+            <CardActionArea>
+              <CardMedia
+                component="img"
+                style={{ width: '345px', height: '40%' }} 
+                image="https://www.redcross.lk/wp-content/uploads/2023/11/image_3aad9b0c54.jpg"
+                alt="Ambulance service"
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                {services.serviceName}
+                <div>
+                  email : {services.email}<br/>
+                  contact: {services.servicePnumber}
                 </div>
-               
-              </div>
-            );
-          })}
-        </div>
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+        </Link>
+                            </div>
+                        ))}
+        
       </div>
-      </div>
+    </div>
+
       <ProjectFooter/>
     </div>
   )

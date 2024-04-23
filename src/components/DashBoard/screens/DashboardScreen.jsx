@@ -1,12 +1,14 @@
-import { AreaCards, AreaCharts, AreaTable, AreaTop } from "../dashbordComponents";
+import { AreaCards, AreaTop } from "../dashbordComponents";
+import ServiceMuitable from "../dashbordComponents/ServiceTable";
+import UserMuitable from "../dashbordComponents/UseerTable";
 
 const DashboardScreen = () => {
   return (
     <div className="content-area ">
       <AreaTop />
       <AreaCards />
-      <AreaCharts />
-      <AreaTable />
+      <UserMuitable/>
+      <ServiceMuitable/>
     </div>
   );
 };

@@ -1,10 +1,6 @@
-import React from 'react'
+
 import './HomeEmergencyKit.css';
-import Kit from '../assets/images/kit.jpg'
-import FireI from '../assets/images/fire.jpg';
-import FireCover from '../assets/images/firecover.jpeg';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import HomeFireCover from '../assets/images/homefire.jpeg';
 
 
 const HomeFire = () => {
@@ -14,9 +10,6 @@ const HomeFire = () => {
         <div className='main-container-side-1'>
         <h3 className='main-name'>Home Fire Escape Plan</h3>
         
-        </div>
-        <div className='main-container-side-2'>
-            <img src={HomeFireCover} className='main-container-side-2-image'/>
         </div>
       </div>
 
@@ -39,13 +32,6 @@ const HomeFire = () => {
 
         </div>
       </div>
-      </div>
-
-      <div className='youtube-video-link'>
-      <div class="ratio ratio-21x9">
-  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/watch?v=ohC9HXfryJc" ></iframe>
-</div>
-
       </div>
     </div>
   )
