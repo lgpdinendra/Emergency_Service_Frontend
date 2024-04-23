@@ -11,7 +11,7 @@ import './AreaCard.css';
 import { Link } from 'react-router-dom';
 
 export default function App() {
-  const cardStyle = { maxWidth: 345, height: 400 };
+  const cardStyle = { maxWidth: 345, height: 370 };
 
   return (
     <div className='mains'>
@@ -37,7 +37,7 @@ export default function App() {
           </Card>
         </Link>
 
-        <Link to="/fire" className='links'>
+        <Link to="/service/fire" className='links'>
           <Card sx={cardStyle}>
             <CardActionArea>
               <CardMedia
@@ -58,7 +58,7 @@ export default function App() {
           </Card>
         </Link>
 
-        <Link to="/vehicle" className='links'>
+        <Link to="/service/vehicle" className='links'>
           <Card sx={cardStyle}>
             <CardActionArea>
               <CardMedia
@@ -79,7 +79,7 @@ export default function App() {
           </Card>
         </Link>
 
-        <Link to="/flood" className='links'>
+        <Link to="/service/flood" className='links'>
           <Card sx={cardStyle}>
             <CardActionArea>
               <CardMedia

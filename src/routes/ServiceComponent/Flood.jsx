@@ -1,5 +1,8 @@
 import './Ambulance.css'
 import AmbulanceIm from '../ServiceComponent/images/flood.jpg'
+import ProjectFooter from "./ProjectFooter"
+import Hero from '../../components/Hero';
+import NavBar from '../../components/NavBar';
 
 const data = [
     {
@@ -15,9 +18,15 @@ const data = [
 const Flood = () => {
   return (
     <div>
+      <NavBar/>
+            <Hero
+                pName="service"
+                heroImg="https://media.istockphoto.com/id/623826228/photo/flood-in-jakarta-indonesia.jpg?s=1024x1024&w=is&k=20&c=6WycLAlnWHuU3_dvi6DorSIlI10UuLWj2zGaLR_YDVg="
+                title="Flood Natural Disaster Management"
+                text="When it comes to managing flood disasters, it's all about being prepared. By assessing the risks and building strong infrastructure, communities can shield themselves from the impact of floods. This proactive approach helps minimize damage and keeps everyone safer when the waters rise."
+            />
      <div className="progress-bar1">
         <div className="progress-bar-info1">
-          <h4 className="progress-bar-title1">Flood Natural Disaster Management</h4>
         </div>
         <div className='main-bar'>
         <div className='image-bar'>
@@ -53,6 +62,7 @@ const Flood = () => {
         </div>
       </div>
       </div>
+      <ProjectFooter/>
     </div>
   )
 }

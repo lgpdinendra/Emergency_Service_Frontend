@@ -1,5 +1,8 @@
 import './Ambulance.css'
 import AmbulanceIm from '../ServiceComponent/images/ambulance.jpg'
+import NavBar from '../../components/NavBar';
+import Hero from '../../components/Hero';
+import ProjectFooter from "./ProjectFooter"
 
 const data = [
     {
@@ -15,9 +18,15 @@ const data = [
 const Ambulance = () => {
   return (
     <div>
+      <NavBar/>
+            <Hero
+                pName="service"
+                heroImg="https://www.adlittle.pt/sites/default/files/reports/adl_ambulance_services_-_optimizing_operations_cover.jpg"
+                title="Ambulance Service"
+                text="When an emergency strikes and every second counts, ambulance services are there to offer quick medical help and a safe ride to the hospital. They're the first responders who jump into action to ensure that you get the care you need, right when you need it the most."
+            />
      <div className="progress-bar1">
         <div className="progress-bar-info1">
-          <h4 className="progress-bar-title1">Ambulance Service</h4>
         </div>
         <div className='main-bar'>
         <div className='image-bar'>
@@ -53,6 +62,7 @@ const Ambulance = () => {
         </div>
       </div>
       </div>
+      <ProjectFooter/>
     </div>
   )
 }

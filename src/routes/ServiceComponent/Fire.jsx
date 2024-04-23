@@ -1,5 +1,8 @@
 import './Ambulance.css'
 import AmbulanceIm from '../ServiceComponent/images/fire.jpg'
+import Hero from '../../components/Hero';
+import NavBar from '../../components/NavBar';
+import ProjectFooter from "./ProjectFooter"
 
 const data = [
     {
@@ -15,9 +18,15 @@ const data = [
 const Fire = () => {
   return (
     <div>
+      <NavBar/>
+            <Hero
+                pName="about"
+                heroImg="https://www.columbian.com/wp-content/uploads/2015/12/80737_auto_accident_roll_over_Auto_accident_roll_over_woman_tra.jpg"
+                title="Fire and Rescue Services"
+                text="When a fire breaks out, whether it's at home, at work, or outdoors, firefighters are the heroes who rush in to tackle the flames, keep us safe, and protect our property. They're always ready to respond, day or night, making sure that everyone can feel a little safer knowing help is just a call away."
+            />
      <div className="progress-bar1">
         <div className="progress-bar-info1">
-          <h4 className="progress-bar-title1">Fire Service</h4>
         </div>
         <div className='main-bar'>
         <div className='image-bar'>
@@ -53,6 +62,7 @@ const Fire = () => {
         </div>
       </div>
       </div>
+      <ProjectFooter/>
     </div>
   )
 }

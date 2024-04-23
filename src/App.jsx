@@ -8,6 +8,9 @@ import LoginAndRegister from './components/LoginAndRegister'
 import Dashboard from './components/DashBoard/dashbord'
 import PageNotFound from './components/DashBoard/screens/PageNotFound'
 import Ambulance from './routes/ServiceComponent/Ambulance'
+import Fire from './routes/ServiceComponent/Fire'
+import Flood from './routes/ServiceComponent/Flood'
+import VehicleRecovery from './routes/ServiceComponent/VehicleRecovery'
 
 function App() {
   return (
@@ -21,6 +24,9 @@ function App() {
         <Route path = "/signup" element = {<LoginAndRegister/>}/>
         <Route path = "/dashboard" element = {<Dashboard/>}/>
         <Route path = "/service/ambulance" element = {<Ambulance/>}/>
+        <Route path = "/service/fire" element = {<Fire/>}/>
+        <Route path = "/service/flood" element = {<Flood/>}/>
+        <Route path = "/service/vehicle" element = {<VehicleRecovery/>}/>
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       </div>
