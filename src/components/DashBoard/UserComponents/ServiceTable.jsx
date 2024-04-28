@@ -1,4 +1,5 @@
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Button } from "@mui/material";
+import axios from "axios";
 import { useEffect, useState } from "react";
 import Swal from 'sweetalert2';
 
@@ -53,9 +54,8 @@ const UserMuitable = () => {
 
     const handleApproveUser = async (email) => {
         try {
-            const response = await fetch(`http://localhost:8080/approve/${email}`, {
-                method: 'POST',
-            });
+            const response = await axios.put(`http://localhost:8080/service/approve`, email);
+            //const response = await axios.post('http://localhost:8080/admin/login', { email, password });
             if (!response.ok) throw new Error('Failed to approve user');
             return response.json();
         } catch (error) {

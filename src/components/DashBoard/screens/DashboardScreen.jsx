@@ -1,6 +1,6 @@
 import { AreaCards, AreaTop } from "../dashbordComponents";
-import ServiceMuitable from "../dashbordComponents/ServiceTable";
-import UserMuitable from "../dashbordComponents/UseerTable";
+import ServiceMuitable from "../UserComponents/ServiceTable";
+import UserMuitable from "../UserComponents/UseerTable"
 
 const DashboardScreen = () => {
   return (

@@ -9,7 +9,7 @@ function About (){
         <Hero
             pName = "about"
             heroImg = "https://www.columbian.com/wp-content/uploads/2015/12/80737_auto_accident_roll_over_Auto_accident_roll_over_woman_tra.jpg"
-            title = "About Us"
+            title = "Contact Us"
             text = "Revolutionizing Emergency Response in Gampaha, Sri Lanka. Learn more about who we are, our mission, and how we're making a difference in the community."
         />
         <ProjectFooter/>

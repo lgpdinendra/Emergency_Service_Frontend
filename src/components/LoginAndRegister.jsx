@@ -74,10 +74,10 @@ const LoginAndRegister = () =>{
     
     const isEmpty = (value) => value.trim() === '';
 
-  //   const isValidPassword = (password) => {
-  //     const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d])[A-Za-z\d[^A-Za-z\d]]{8,}$/;
-  //     return re.test(String(password));
-  // }
+    const isValidPassword = (password) => {
+      const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d]).{8,}$/;
+      return re.test(String(password));
+  }
     
     const arePasswordsMatching = (password, confirmPassword) => password === confirmPassword;
     
@@ -107,7 +107,7 @@ const LoginAndRegister = () =>{
 
         const handleServiceLogin = async () => {
           try {
-            const response = await axios.post('http://localhost:8080/admin/login', { email, password });
+            const response = await axios.post('http://localhost:8080/service/login', { email, password });
             if (response.status === 200) {
               updateSessionStorage(response.data);
               window.location.href = '/';
@@ -137,6 +137,7 @@ const LoginAndRegister = () =>{
           sessionStorage.setItem('loggedUserEmail', email);
           sessionStorage.setItem('loggedUserName', publicName||serviceName||adminName);
           sessionStorage.setItem('loggedUserRole', role||Role);
+          sessionStorage.setItem('isLoggedIn', true);
         };
 
     const handleSignUp = async () => {
@@ -150,10 +151,10 @@ const LoginAndRegister = () =>{
         return;
       }
 
-      // if(!isValidPassword(password)){
-      //   ErrorNotify('Your password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one digit, and one special character (e.g., !, @, #, ?).')
-      //   return; 
-      // }
+      if(!isValidPassword(password)){
+        ErrorNotify('Your password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one digit, and one special character (e.g., !, @, #, ?).')
+        return; 
+      }
     
       if (action === "Sign Up" && !arePasswordsMatching(password, conpassword)) {
         ErrorNotify('Passwords do not match.');

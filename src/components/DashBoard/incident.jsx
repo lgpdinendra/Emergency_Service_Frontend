@@ -8,23 +8,23 @@ import PageNotFound from "./screens/PageNotFound";
 import Map from './IncidentComponent/MapComponent';
 
 function Incidents() {
-  const [isAuthorized, setIsAuthorized] = useState(false);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const loggedUserRole = sessionStorage.getItem('loggedUserRole');
+    const [isAuthorized, setIsAuthorized] = useState(false);
+    const navigate = useNavigate();
+  
+    useEffect(() => {
+      const isLoggedIn = sessionStorage.getItem('isLoggedIn');
+  
+      if (!isLoggedIn) {
+        navigate('/signup');
+        return;
+      }
+  
+      setIsAuthorized(true);
+    }, [navigate]);
     
-    if (!loggedUserRole) {
-      navigate('/signup');
-      return;
+    if (!isAuthorized) {
+      return navigate('/'); 
     }
-
-    setIsAuthorized(loggedUserRole === "ServiceUsers");
-  }, [navigate]);
-
-  if (!isAuthorized) {
-    return navigate('/'); 
-  }
 
   return (
     <SidebarProvider>

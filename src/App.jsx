@@ -27,9 +27,9 @@ function App() {
         <Route path = "/contact" element = {<Contact/>}/>
         <Route path = "/signup" element = {<LoginAndRegister/>}/>
         <Route path = "/dashboard" element = {<Dashboard/>}/>
-        <Route path = "/dashboard/incident" element = {<Incidents/>}/>
-        <Route path = "/dashboard/users" element = {<PublicUser/>}/>
-        <Route path = "/dashboard/services" element = {<ServiceUsers/>}/>
+        <Route path = "/dashboard/incident/*" element = {<Incidents/>}/>
+        <Route path = "/dashboard/users/*" element = {<PublicUser/>}/>
+        <Route path = "/dashboard/services/*" element = {<ServiceUsers/>}/>
         <Route path = "/service/ambulance" element = {<Ambulance/>}/>
         <Route path = "/service/fire" element = {<Fire/>}/>
         <Route path = "/service/flood" element = {<Flood/>}/>

@@ -12,16 +12,16 @@ function Dashboard() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const loggedUserRole = sessionStorage.getItem('loggedUserRole');
-    
-    if (!loggedUserRole) {
+    const isLoggedIn = sessionStorage.getItem('isLoggedIn');
+
+    if (!isLoggedIn) {
       navigate('/signup');
       return;
     }
 
-    setIsAuthorized(loggedUserRole === "Admin");
+    setIsAuthorized(true);
   }, [navigate]);
-
+  
   if (!isAuthorized) {
     return navigate('/'); 
   }

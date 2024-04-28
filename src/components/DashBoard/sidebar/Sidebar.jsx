@@ -15,6 +15,7 @@ const Sidebar = () => {
   const { isSidebarOpen, closeSidebar } = useContext(SidebarContext);
   const navbarRef = useRef(null);
   const [action,setAction] = useState("")
+  
 
   // closing the navbar when clicked outside the sidebar area
   const handleClickOutside = (event) => {

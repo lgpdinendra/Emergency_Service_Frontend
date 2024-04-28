@@ -1,7 +1,7 @@
 import { Component } from "react";
 import "../styles/NavBarStyles.css"
 import { MenuItems } from "./MenuItems";
-import { Link, Navigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import Dropdown from 'react-bootstrap/Dropdown';
@@ -36,7 +36,7 @@ class NavBar extends Component{
 
     redirectToDashboard = () => {
         const { userRole } = this.state;
-        if (userRole === "ServiceUsers" || userRole === "PublicUsers") {
+        if (userRole == "ServiceUsers" || userRole == "PublicUsers"|| userRole =="Admin") {
             window.location.href = '/dashboard';
         }
     };
